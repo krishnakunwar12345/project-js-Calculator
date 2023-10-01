@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <h2 class="text-center">JavaScript Calculator</h2>
+    <div class="container mt-5">
+        <form id="calculator-form">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <h1>Number-1</h1>
+                    <input type="number" class="form-control" id="num1" placeholder="Enter number">
+                </div>
+                <div class="col-md-4">
+                    <h1>Operator</h1>
+                    <select class="form-control" id="operator">
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                        <option value="*">*</option>
+                        <option value="/">/</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <h1>Number-2</h1>
+                    <input type="number" class="form-control" id="num2" placeholder="Enter number">
+                </div>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-primary mt-3" onclick="calculate()">Submit</button>
+            </div>
+            <div class="col-md-4 container">
+                <h1 class="text-center">Answer</h1>
+                <input type="text" class="form-control" id="result" readonly>
+            </div>
+        </form>
+    </div>
+
+
+    <!-- Bootstrap and Jquery Js  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        function calculate() {
+            // input value
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operator = document.getElementById('operator').value;
+
+            // perform the calculation
+            let result;
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 !== 0) {
+                        result = num1 / num2;
+                    } else {
+                        result = "Cannot divide by zero";
+                    }
+                    break;
+                default:
+                    result = "Invalid operator";
+            }
+
+            // display the result
+            document.getElementById('result').value = result;
+        }
+
+        // reset the result when anu input field changes
+        document.getElementById('num1').addEventListener('change', function () {
+            document.getElementById('result').value = '';
+        });
+
+        document.getElementById('num2').addEventListener('change', function () {
+            document.getElementById('result').value = '';
+        });
+
+        document.getElementById('num2').addEventListener('change', function () {
+            document.getElementById('result').value = '';
+        });
+    </script>
+</body>
+
+</html>
